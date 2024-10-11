@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync</title>
+    <link rel="shortcut icon" href="study_sync_images/StudySyn.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        *
+        {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+        }
+        body
+        {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+        }
+        .container
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            gap: 2rem;
+            padding: 1.5rem;
+        }
+        .nav
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+        }
+        .left_nav
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.625rem;
+        }
+        .left_nav_img img
+        {
+           height: 5.875rem;
+           width: 1.938rem;
+        }
+        .left_nav_heading a
+        {
+            text-decoration: none;
+        }
+        .left_nav_heading h2
+        {
+            font-weight: bolder;
+            font-size: 2rem;
+            color: #333333;
+        }
+        .mid_nav
+        {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .mid_nav a
+        {
+            font-weight: bold;
+            color: #718096;
+            font-size: 1.125rem;
+            text-decoration: none;
+            cursor: pointer;
+            transform: color 0.1s;
+        }
+        .mid_nav a:hover
+        {
+            color: #2563eb;
+        }
+        .right_nav
+        {
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .right_nav a
+        {
+            border-radius: 0.375rem;
+            background-color: #6366f1;
+            padding: 0.6rem 1.25rem;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transform: all 0.1s;
+        }
+        .right_nav a:hover
+        {
+            background-color: #5254f8;
+        }
+        .menu-button
+        {
+            display: none;
+        }
+        .menu
+        {
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #ffffff;
+        }
+        .menu-img
+        {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .hero
+        {
+            display: flex;
+            justify-content: space-evenly;
+            width: 80%;
+            gap: 2.0rem;
+        }
+        .left_hero
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            animation: slideFromLeft 1s ease forwards;
+            opacity: 0;
+        }
+        @keyframes slideFromLeft 
+        {
+            0%
+            {
+                opacity: 0;
+                transform: translateX(-100%);
+            }    
+            100%
+            {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .hero_textbox
+        {
+            display: flex;
+            flex-direction: column;
+            padding: 2.0rem 0rem;
+            gap: 1.0rem;
+        }
+        .hero_textbox span
+        {
+            color: #6366f1;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .hero_textbox h2
+        {
+            color: #333333;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        .hero_textbox p
+        {
+            margin-top: 0.7rem;
+            width: 70%;
+            color: #808080;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .hero_buttons
+        {
+            display: flex;
+            gap: 1rem;
+        }
+        #start_button
+        {
+            border-radius: 0.375rem;
+            background-color: #6366f1;
+            padding: 0.6rem 1.25rem;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transform: all 0.1s;
+        }
+        #tour_button
+        {
+            border-radius: 0.375rem;
+            background-color: #555;
+            padding: 0.6rem 1.25rem;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transform: all 0.1s;
+        }
+        #start_button:hover
+        {
+            background-color: #5254f8;
+        }
+        #tour_button:hover
+        {
+            background-color: #808080;
+        }
+        .right_hero
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .right_hero img
+        {
+            height: 28.0rem;
+            width:  34.0rem;
+            border-radius: 2rem;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .companies
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.7rem;
+            gap: 2.0rem;
+            width: 80%;
+            animation: slideFromLeft 1s ease forwards;
+        }
+        .company_textbox
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .company_textbox h2
+        {
+            color: #333333;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .company_section
+        {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background-color: #f0f0f0;
+            width: 80%;
+            gap: 2.5rem;
+            padding: 1.75rem 1.25rem;
+            border: none;
+            border-radius: 1rem;
+        }
+        .company
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.1rem;
+        }
+        .company img
+        {
+            width: 1.4rem;
+            height: 1.15rem;
+        }
+        .company span
+        {
+            color: #808080;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .card_section
+        {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding: 1.5rem 0rem;
+        }
+        .card_textbox
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 0 auto;
+            width: 80%;
+        }
+        .card_textbox h2
+        {
+            font-weight: 600;
+            font-size: 2.2rem;
+        }
+        .card_textbox p
+        {
+            color: #808080;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 65%;
+        }
+        .cards 
+        {
+            display: grid;
+            width: 55%;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1rem;
+        }
+        .card_item
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            padding: 2rem 0.5rem;
+            gap: 1rem;
+        }
+        .card_img
+        {
+            background-color: #ffffff;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card_img img
+        {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .card_item h3
+        {
+            font-size: 1.3rem;
+            color: #f0f0f0;
+            width: 80%;
+        }
+        .card_item p
+        {
+            font-size: 0.8rem;
+            color: #f0f0f0;
+            width: 90%;
+        }
+        #card1
+        {
+            background-color: #4a90e2;
+        }
+        #card2
+        {
+            background-color: #ff6289;
+        }
+        #card3
+        {
+            background-color: #fcbf58;
+        }
+        #card4
+        {
+            background-color: #44bfc3;
+        }
+        #card5
+        {
+            background-color: #77b05d;
+        }
+        #card6
+        {
+            background-color: #7d78b1;
+        }
+        .testimonies
+        {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 3rem;
+            gap: 1rem;
+            padding: 1rem 2rem;
+        }
+        .testimony_heading
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;            
+        }
+        .testimony_heading h2
+        {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        .testimony_grid
+        {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 2rem;
+            padding: 1rem 8rem;
+            width: 85%;
+        }
+        .testimony
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid #f0f0f0; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            gap: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimony:hover
+        {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0,2);
+            border: 1px solid #2563eb;
+        }
+        .testimony p
+        {
+            text-align: center;
+            color: #808080;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .testimony_content
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .testimony_content img
+        {
+            height: 5rem;
+            width: 6rem;
+        }
+        .testimony_content h3
+        {
+            color: #6366f1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+        .testimony_content span
+        {
+            text-align: center;
+            color: #808080;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .newsletter
+        {
+            background-color: #ffffff;
+            width: 70%;
+            height: 25rem;
+            margin: 0 auto;
+            padding: 1.2rem;
+            margin-top: 3rem;
+        }
+        .newsletter_content
+        {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+            border-radius: 1rem;
+        }
+        .left_newsletter
+        {   
+            width: 80%;
+            height: 100%;
+        }
+        .left_newsletter img
+        {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            overflow: hidden;
+        }
+        .right_newsletter
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+        }
+        .newsletter_textbox
+        {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap: 0.1rem;
+            padding: 1.5rem;
+        }
+        .newsletter_textbox h2
+        {
+            color: #5254f8;
+            font-weight: bolder;
+            font-size: 1.8rem;
+        }
+        .newsletter_textbox p
+        {
+            color: #808080;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .input_box
+        {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .input_box button
+        {
+            background-color: #6366f1;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 0.95rem;
+            cursor: pointer;
+        }
+        .input_box button:hover
+        {
+            background-color: #5254f8;
+        }
+        #newsletter_p
+        {
+            margin-top: 1rem;
+            font-size: 0.6rem;
+        }
+        #newsletter_p a
+        {
+            text-decoration: underline;
+            color: #5254f8;
+        }
+        #email
+        {
+            background-color: #ffffff;
+            color: #333333;
+            outline: none;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+        #email:focus
+        {
+            border-color: #2563eb;
+            box-shadow: 0 4px 8px rgba(0,0,0,0,0.3);
+        }
+        .footer
+        {
+            background-color: #ffffff;
+            width: 70%;
+            height: 25rem;
+            margin: 0 auto;
+            padding: 1.2rem;
+            margin-top: 3rem;
+        }
+        .footer_content
+        {
+            display: flex;
+            flex-direction: row;
+            justify-items: space-between;
+            gap: 4rem;
+        }
+        .left_footer
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 40%;
+        }
+        .left_footer_content
+        {
+            display: flex;
+            flex-direction: row;
+            gap: 0.4rem;
+        }
+        .left_footer_content h3
+        {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #333333;
+        }
+        .left_footer_content img
+        {
+            width: 1.5rem;
+            height: 2.0rem;
+        }
+        .footer_images
+        {
+            display: flex;
+            gap: 1rem;
+        }
+        .footer_images img
+        {
+            width: 1.5rem;
+            height: 2rem;
+        }
+        .left_footer p
+        {
+            font-size: 1rem;
+            color: #808080;
+            font-weight: 600;
+        }
+        .right_footer
+        {
+            display: flex;
+            flex-direction: row;
+            gap: 4rem;
+            padding-top: 0.5rem;
+            width: 70%;
+        }
+        .footer_item
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .footer_item h3
+        {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333333;
+        }
+        .footer_item a
+        {
+            color: #808080;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .footer_item a:hover
+        {
+            color: #2563eb;   
+        }
+        @media screen and (min-width:1011px)
+        {
+            .mid_nav
+            {
+                display: flex;
+            }
+            .right_nav
+            {
+                display: flex;
+            }
+        }
+        @media screen and (max-width:1011px)
+        {
+            .nav
+            {
+                width: 95%;
+            }
+            .menu-button
+            {
+                display: flex;  
+            }
+            .hero
+            {
+                display: flex;
+                justify-content: space-evenly;
+                width: 80%;
+                gap: 2.0rem;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .left_hero
+            {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                animation: slideFromLeft 1s ease forwards;
+                opacity: 0;
+                justify-content: center;
+                align-items: center;
+            }
+            .hero_textbox
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            .hero_textbox p
+            {
+                text-align: center;
+            }
+            .company_section
+            {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                background-color: #f0f0f0;
+                width: 100%;
+                gap: 1.5rem;
+                padding: 1.0rem 0.5rem;
+                border: none;
+                border-radius: 1rem;
+            }
+            .right_hero img
+            {
+                height: 15.0rem;
+                width:  20.0rem;
+                border-radius: 2rem;
+                box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+                overflow: hidden;
+                width: 100%;
+            }
+            .cards 
+            {
+                display: grid;
+                width: 90%;
+                grid-template-columns: repeat(1, 1fr);
+                grid-gap: 1rem;
+            }
+            .testimony_grid
+            {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                column-gap: 1rem;
+                row-gap: 2rem;
+                padding: 1rem 8rem;
+                width: 90%;
+            }
+            .left_newsletter
+            {
+                display: none;
+            }
+            .newsletter
+            {
+                width: 100%;
+                padding: 0;
+                height: 15rem;
+                margin-top: 4rem;
+            }
+            .right_newsletter
+            {
+                height: 100%;
+                width: 100%;
+                padding-left: 3rem;
+                padding-top: 1rem;
+            }
+            .footer
+            {
+                background-color: #ffffff;
+                width: 100%;
+                height: 25rem;
+                margin: 0 auto;
+                margin-top: 3rem;
+            }
+            .right_footer
+            {
+                margin-right: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="left_nav">
+                <div class="left_nav_img">
+                    <a href="#Home"><img src="study_sync_images/StudySyn.svg" alt="Logo"></a>
+                </div>
+                <div class="left_nav_heading">
+                   <a href="#Home"><h2>StudySync</h2></a>
+                </div>
+            </div>
+            <div class="mid_nav">
+                <a href="#Home">Home</a>
+                <a href="#Features">Features</a>
+                <a href="#Pricing">Pricing</a>
+                <a href="#Blog">Blog</a>
+                <a href="#About">About</a>
+            </div>
+            <div class="right_nav">
+                <a href="#Contact Us">Contact Us</a>
+            </div>
+            <div class="menu-button">
+                <button class="menu">
+                    <img src="study_sync_images/Hamburger.svg" alt="Menu" class="menu-img">
+                </button>
+            </div>
+        </div>
+
+        <div class="hero">
+            <div class="left_hero">
+                <div class="hero_textbox">
+                    <span>Very proud to introduce</span>
+                    <h2>Seamless Learning for Brighter Futures</h2>
+                    <p>Our innovative platform offers an effortless and seamless approach to learning, empowering students of all ages to achieve brighter futures. Join us on a transformative journey to simplify education and unlock your full potential</p>
+                </div>
+                <div class="hero_buttons">
+                    <a id="start_button" href="#Start Now">Start Now</a>
+                    <a id="tour_button" href="#Take Tour">Take Tour</a>
+                </div>
+            </div>
+            <div class="right_hero">
+                    <img src="study_sync_images/usgs-hoS3dzgpHzw-unsplash.jpg" alt="Intro Picture">         
+            </div>
+        </div>
+
+        <div class="companies">
+            <div class="company_textbox">
+                <h2>Trusted by the best</h2>
+            </div>
+            <div class="company_section">
+                <div class="company">
+                    <img src="study_sync_images/Google.svg" alt="Google">
+                    <span>Google</span>
+                </div>
+                <div class="company">
+                    <img src="study_sync_images/Microsoft.svg" alt="Microsoft">
+                    <span>Microsoft</span>
+                </div>
+                <div class="company">
+                    <img src="study_sync_images/linkedin.svg" alt="Linkedin">
+                    <span>Linkedin</span>
+                </div>
+                <div class="company">
+                    <img src="study_sync_images/VectorEdu.svg" alt="VectorEdu">
+                    <span>VectorEdu</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card_section">
+        <div class="card_textbox">
+            <h2>Our Competitive Advantage</h2>
+            <p>This is a section of some simple filter text, also known as placeholder text. It shares some characteristics of real written text but is random or otherwise generated</p>
+        </div>
+        <div class="cards">
+            <div class="card_item" id="card1">
+                <div class="card_img">
+                    <img src="study_sync_images/PersonalizedLearn.svg" alt="Bulb">
+                </div>
+                <h3>Personalized Learning</h3>
+                <p>Offer tailored learning experiences through AI and machine learning to cater to individual student needs.</p>
+            </div>
+            <div class="card_item" id="card2">
+                <div class="card_img">
+                    <img src="study_sync_images/Affordability.svg" alt="Affordability">
+                </div>
+                <h3>Affordability</h3>
+                <p>Provide high quality education at an affordable price point, making it accessible to a broader audience.</p>
+            </div>
+            <div class="card_item" id="card3">
+                <div class="card_img">
+                    <img src="study_sync_images/IndustryPatner.svg" alt="IndustryPartner">
+                </div>
+                <h3>IndustryPartner</h3>
+                <p>Collaborate with well known companies and institutions to offer accredited courses and certifications, adding credibility to your offerings.</p>
+            </div>
+            <div class="card_item" id="card4">
+                <div class="card_img">
+                    <img src="study_sync_images/InnovativeTech.svg" alt="InnovativeTech">
+                </div>
+                <h3>Innovative Technology</h3>
+                <p>Utilize cutting edge technology, such as augmented reality or virtual reality, to create immersive learning experiences.</p>
+            </div>
+            <div class="card_item" id="card5">
+                <div class="card_img">
+                    <img src="study_sync_images/PersonalizedLearn.svg" alt="Support">
+                </div>
+                <h3>Responsive Support</h3>
+                <p>Provide exceptional customer support and assistance to students and educators.</p>
+            </div>
+            <div class="card_item" id="card6">
+                <div class="card_img">
+                    <img src="study_sync_images/Analytics.svg" alt="Analytics">
+                </div>
+                <h3>Analytics and Insights</h3>
+                <p>Offer detailed progress tracking and analytics to help students and teachers monitor performance and make data driven decisions.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonies">
+        <div class="testimony_heading">
+            <h2>What Others Say About Us</h2>
+        </div>
+        <div class="testimony_grid">
+            <div class="testimony">
+                <p>"StudySync revolutionized my classroom! Engaging content and teacher resources make learning enjoyable. Highly recommended for educators."</p>
+                <div class="testimony_content">
+                    <img src="study_sync_images/avatar1.png" alt="avatar1">
+                    <h3>Sarah Johnson</h3>
+                    <span>8th Grade English Teacher</span>
+                </div>
+            </div>
+            <div class="testimony">
+                <p>"StudySync transformed our family's learning journey. Safe, interactive, and progress tracking features are invaluable for parents."</p>
+                <div class="testimony_content">
+                    <img src="study_sync_images/avatar2.png" alt="avatar2">
+                    <h3>Mark Davis</h3>
+                    <span>Parent</span>
+                </div>
+            </div>
+            <div class="testimony">
+                <p>"StudySync a true game changer! Flexible content, tailored assessments, and excellent support. Integral to our school district's success</p>
+                <div class="testimony_content">
+                    <img src="study_sync_images/avatar3.png" alt="avatar3">
+                    <h3>Dr. James Carter</h3>
+                    <span>School Administrator</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="newsletter">
+        <div class="newsletter_content">
+            <div class="left_newsletter">
+                <img src="study_sync_images/img.png" alt="">
+            </div>
+            <div class="right_newsletter">
+                <div class="newsletter_textbox">
+                    <h2>Get the Latest Updates</h2>
+                    <p>Sign up for our newsletter</p>
+                    <div class="input_box">
+                        <input type="email" name="email" id="email" placeholder="Email">
+                        <button>Send</button>
+                    </div>
+                    <p id="newsletter_p">By signing up for our newsletter you agree to our <a href="#Terms">Terms and Conditions</a> and <a href="#Privacy">Privacy Policy</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_content">
+            <div class="left_footer">
+                <div class="left_footer_content">
+                    <img src="study_sync_images/StudySyn.svg" alt="Logo">
+                    <h3>StudySync</h3>
+                </div>
+                <p>Seamless Learning for Brighter Futures.</p>
+                <div class="footer_images">
+                    <img src="study_sync_images/instagram.svg" alt="instagram">
+                    <img src="study_sync_images/twitter.svg" alt="twitter">
+                    <img src="study_sync_images/linkedin.svg" alt="linkedin">
+                    <img src="study_sync_images/github.svg" alt="Github">
+                </div>
+            </div>
+            <div class="right_footer">
+                <div class="footer_item">
+                    <h3>Products</h3>
+                    <a href="#Overview">Overview</a>
+                    <a href="#Solutions">Solutions</a>
+                    <a href="#Pricing">Pricing</a>
+                    <a href="#Customers">Customers</a>
+                </div>
+                <div class="footer_item">
+                    <h3>Company</h3>
+                    <a href="#About">About</a>
+                    <a href="#Investor Relations">Investor Relations</a>
+                    <a href="#Jobs">Jobs</a>
+                    <a href="#Press">Press</a>
+                    <a href="#Blog">Blog</a>
+                </div>
+                <div class="footer_item">
+                    <h3>Support</h3>
+                    <a href="#Contact">Contact</a>
+                    <a href="#Documentation">Documentation</a>
+                    <a href="#Chat">Chat</a>
+                    <a href="#FAQ">FAQ</a>
+                </div>
+                <div class="footer_item">
+                    <h3>Legal</h3>
+                    <a href="#Terms">Terms of Service</a>
+                    <a href="#Privacy Policy">Privacy Policy</a>
+                    <a href="#Cookie Settings">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
